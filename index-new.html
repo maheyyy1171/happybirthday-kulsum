@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 20th Birthday Kulsoom 🎀🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffe6f5, #fff0fb, #fde6ff);
+    font-family: 'Pacifico', cursive;
+  }
+
+  h1 {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    font-size: 3.5em;
+    color: #ff3399;
+    text-shadow: 2px 2px 12px #ff99cc;
+    animation: pop 2s ease-in-out infinite alternate;
+    z-index: 10;
+  }
+
+  @keyframes pop { 0%{transform:scale(1);} 100%{transform:scale(1.1);} }
+
+  /* Slideshow container */
+  .slideshow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .slideshow img {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0) rotate(0deg);}
+    50% { transform: translateY(-50px) rotate(360deg);}
+  }
+
+  /* Floating petals */
+  .petal {
+    position: absolute;
+    font-size: 1.5em;
+    opacity: 0.8;
+    animation: petalFall linear infinite;
+  }
+
+  @keyframes petalFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity:0.8;}
+    100% { transform: translateY(100vh) rotate(360deg); opacity:0;}
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    font-size: 1.5em;
+    animation: heartFloat 5s ease-in-out infinite;
+  }
+
+  @keyframes heartFloat {
+    0% { transform: translateY(0) scale(1); opacity:1; }
+    100% { transform: translateY(-300px) scale(1.5); opacity:0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Happy 20th Birthday Kulsoom! 🎀🌸</h1>
+
+<div class="slideshow" id="slideshow"></div>
+
+<!-- Optional background music -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-littleidea.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const flowerImages = [
+    'https://i.imgur.com/Nh5o6Fq.png',
+    'https://i.imgur.com/8y5o2Ju.png',
+    'https://i.imgur.com/2z0LfxG.png',
+    'https://i.imgur.com/ME7y6Gc.png'
+  ];
+
+  const colors = ['#ff3399','#ff66cc','#ff99cc','#ffccff','#ffb6c1'];
+
+  // Floating flower slideshow images
+  for(let i=0;i<25;i++){
+    let img = document.createElement('img');
+    img.src = flowerImages[Math.floor(Math.random()*flowerImages.length)];
+    img.style.left = Math.random()*90 + 'vw';
+    img.style.top = Math.random()*80 + 'vh';
+    img.style.width = (Math.random()*80+70)+'px';
+    img.style.height = img.style.width;
+    img.style.animationDuration = (Math.random()*6+5)+'s';
+    document.getElementById('slideshow').appendChild(img);
+  }
+
+  // Floating petals
+  for(let i=0;i<60;i++){
+    let p = document.createElement('div');
+    p.className='petal';
+    p.style.left=Math.random()*100+'vw';
+    p.style.color=colors[Math.floor(Math.random()*colors.length)];
+    p.innerHTML='🌸';
+    p.style.animationDuration=(Math.random()*6+4)+'s';
+    document.body.appendChild(p);
+  }
+
+  // Floating hearts
+  setInterval(()=>{
+    let heart = document.createElement('div');
+    heart.className='heart';
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.color = colors[Math.floor(Math.random()*colors.length)];
+    heart.innerHTML = '💖';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+  }, 400);
+
+</script>
+
+</body>
+</html>
